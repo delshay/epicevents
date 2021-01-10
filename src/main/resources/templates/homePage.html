@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet">
+    <title>Epic Events - The Events Calendar</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid w-75 mx-auto">
+        <a class="navbar-brand" href="#"><img alt="" height="30" src="/images/blue-calendar.png" width="30"></a>
+        <a class="navbar-brand" href="#">Epic Events</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            <ul class="navbar-nav me-right mb-2 mb-lg-0">
+                <li><a class="nav-link" href="#">Register</a></li>
+                <li><a class="nav-link" href="#">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<ul class="nav nav-tabs w-50 mx-auto">
+    <li class="nav-item">
+        <a class="nav-link active" href="/">UPCOMING</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">PREVIUS</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">SEARCH FOR MORE</a>
+    </li>
+</ul>
+
+<div id="new-events">
+    <div class="card w-50 mx-auto mt-2 mb-2" th:each="event : ${newEvents}">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${event.getTitle()}"></h5>
+            <p class="card-text" style="text-align: justify" th:text="${event.getDescription()}"></p>
+            <p class="card-text"><small class="text-muted" th:text="${event.getStartsOn().toString()}+' to '+${event.getEndsOn().toString()}"></small></p>
+            <div class="row">
+                <div class="col"><a class="btn btn-primary btn-sm" href="#">Find out more</a></div>
+                <div class="col"><p class="card-text" style="text-align: right"><small class="text-muted" th:text="${event.getHashTag()}"></small></p></div>
+                <div class="w-100"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
